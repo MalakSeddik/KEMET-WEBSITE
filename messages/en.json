@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "theCraft": "The Craft",
+    "ourStory": "Our Story",
+    "leatherCare": "Leather Care",
+    "cart": "Cart",
+    "account": "Account"
+  },
+  "home": {
+    "hero": {
+      "headline": "Crafted for Eternity",
+      "sub": "Handcrafted leather goods inspired by ancient Egyptian mastery."
+    }
+  },
+  "shop": {
+    "title": "Shop",
+    "filterAll": "All"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "outOfStock": "Out of Stock"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "subtotal": "Subtotal",
+    "checkout": "Proceed to Checkout"
+  },
+  "checkout": {
+    "title": "Checkout"
+  },
+  "account": {
+    "title": "My Account",
+    "signIn": "Sign In",
+    "signUp": "Create Account",
+    "signOut": "Sign Out",
+    "orders": "My Orders",
+    "profile": "Profile",
+    "welcome": "Welcome back",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full Name",
+    "confirmPassword": "Confirm Password",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "passwordMismatch": "Passwords do not match.",
+    "forgotPassword": "Forgot password?"
+  },
+  "craft": { "title": "The Craft" },
+  "story": { "title": "Our Story" },
+  "leatherCare": { "title": "Leather Care" }
+}

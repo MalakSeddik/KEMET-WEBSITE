@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "shop": "المتجر",
+    "theCraft": "الحرفة",
+    "ourStory": "قصتنا",
+    "leatherCare": "العناية بالجلد",
+    "cart": "السلة",
+    "account": "حسابي"
+  },
+  "home": {
+    "hero": {
+      "headline": "مصنوع للأبدية",
+      "sub": "منتجات جلدية يدوية مستوحاة من البراعة المصرية القديمة."
+    }
+  },
+  "shop": {
+    "title": "المتجر",
+    "filterAll": "الكل"
+  },
+  "product": {
+    "addToCart": "أضف إلى السلة",
+    "outOfStock": "نفدت الكمية"
+  },
+  "cart": {
+    "title": "سلتك",
+    "empty": "سلتك فارغة.",
+    "subtotal": "الإجمالي",
+    "checkout": "إتمام الشراء"
+  },
+  "checkout": {
+    "title": "الدفع"
+  },
+  "account": {
+    "title": "حسابي",
+    "signIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "signOut": "تسجيل الخروج",
+    "orders": "طلباتي",
+    "profile": "الملف الشخصي",
+    "welcome": "مرحباً بعودتك",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "name": "الاسم الكامل",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين.",
+    "forgotPassword": "نسيت كلمة المرور؟"
+  },
+  "craft": { "title": "الحرفة" },
+  "story": { "title": "قصتنا" },
+  "leatherCare": { "title": "العناية بالجلد" }
+}
