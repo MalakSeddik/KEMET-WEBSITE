@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg:        #FDF8F0;
+  --color-bg:        #EDE8D8;
   --color-parchment: #F5EAD8;
   --color-tan:       #B07D3A;
   --color-gold:      #C9954C;
@@ -23,8 +23,9 @@
 
 /* ─── Base ───────────────────────────────────────────────────────────────────── */
 body {
-  background-color: #FDF8F0;
+  background-color: #EDE8D8;
   color: #1A0F05;
+  font-size: 17px;
   font-family: var(--font-ui, Arial, sans-serif);
 }
 
@@ -36,6 +37,48 @@ h1, h2, h3, h4 { font-family: var(--font-display, Georgia, serif); }
 blockquote, .font-editorial {
   font-family: var(--font-serif, Georgia, serif);
   font-style: italic;
+}
+
+/* ─── Modern base ───────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+* { -webkit-font-smoothing: antialiased; }
+
+/* Grain texture overlay — add class="grain-overlay" to any relative container */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  opacity: 0.045;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+
+/* ─── Marquee ─────────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+/* ─── Scroll-reveal ───────────────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 28%;
+  }
 }
 
 /* ─── Hero animations ───────────────────────────────────────────────────────── */
@@ -74,4 +117,141 @@ blockquote, .font-editorial {
 .hero-rule {
   transform-origin: center;
   animation: hero-rule 1.2s ease 1.8s both;
+}
+
+/* ─── Our Story page ─────────────────────────────────────────────────────── */
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.story-animate {
+  animation: page-in 1.2s ease both;
+}
+
+.story-ornament-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.story-ornament-line::before,
+.story-ornament-line::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(176,125,58,0.35), transparent);
+}
+
+.story-drop-cap::first-letter {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 5.2em;
+  font-weight: 400;
+  color: #b07d3a;
+  float: left;
+  line-height: 0.75;
+  margin: 8px 12px 0 0;
+}
+
+/* ─── The Craft page ─────────────────────────────────────────────────────── */
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1;   }
+}
+
+.craft-scroll-line {
+  animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+.craft-fade-1 { animation: fade-up 1s ease 0.2s both; }
+.craft-fade-2 { animation: fade-up 1s ease 0.4s both; }
+.craft-fade-3 { animation: fade-up 1s ease 0.6s both; }
+.craft-fade-4 { animation: fade-up 1s ease 1s   both; }
+
+.craft-sec-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-ui, Arial, sans-serif);
+  font-size: 8px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(176,125,58,0.4);
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+.craft-sec-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(176,125,58,0.18);
+}
+
+/* ─── Leather Care page ───────────────────────────────────────────────────── */
+.care-kemet-note {
+  position: relative;
+  margin: 40px 0;
+  padding: 28px 32px;
+  border: 1px solid rgba(176,125,58,0.2);
+  background: rgba(176,125,58,0.04);
+}
+
+.care-kemet-note::before {
+  content: 'KEMET';
+  position: absolute;
+  top: -9px;
+  left: 22px;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #b07d3a;
+  background: #EDE8D8;
+  padding: 0 8px;
+}
+
+.care-do-item,
+.care-dont-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: #3a2410;
+  line-height: 1.85;
+  font-weight: 300;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(176,125,58,0.08);
+}
+
+.care-do-item::before {
+  content: '✓';
+  color: #2d5020;
+  font-size: 11px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.care-dont-item::before {
+  content: '✕';
+  color: #7a2010;
+  font-size: 11px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* scroll-margin for sticky double-nav */
+.scroll-mt-130 { scroll-margin-top: 130px; }
+
+/* hover cards (replaces onMouseEnter/Leave in server components) */
+.care-hover-card {
+  border: 1px solid rgba(176,125,58,0.18);
+  background: rgba(245,234,216,0.3);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.care-hover-card:hover {
+  background: rgba(245,234,216,0.65);
+  border-color: rgba(176,125,58,0.35);
 }

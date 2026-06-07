@@ -38,8 +38,10 @@ export default function Navbar() {
     <>
       {/* ── Main bar ── */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-void shadow-md" : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-void/90 backdrop-blur-md border-b border-white/[0.06] shadow-[0_1px_24px_rgba(0,0,0,0.4)]"
+            : "bg-void/40 backdrop-blur-sm"
         }`}
       >
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center">
@@ -55,8 +57,11 @@ export default function Navbar() {
               <Link
                 key={key}
                 href={href}
-                className={`font-ui text-[11px] tracking-[0.18em] uppercase transition-colors hover:text-gold ${
-                  pathname === href ? "text-gold" : "text-parchment"
+                className={`relative font-ui text-[11px] tracking-[0.18em] uppercase transition-colors hover:text-gold pb-0.5
+                after:absolute after:bottom-0 after:left-0 after:h-px after:bg-gold after:transition-all after:duration-300
+                ${pathname === href
+                  ? "text-gold after:w-full"
+                  : "text-parchment after:w-0 hover:after:w-full"
                 }`}
               >
                 {t(key)}

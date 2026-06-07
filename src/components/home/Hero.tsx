@@ -14,7 +14,7 @@ type Props = {
 
 export default function Hero({ headline, tagline, cta, bgImage, bgVideo }: Props) {
   return (
-    <section className="relative -mt-16 min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative -mt-16 min-h-screen flex flex-col items-center overflow-hidden">
 
       {/* ── Background ── */}
       {bgVideo ? (
@@ -41,6 +41,9 @@ export default function Hero({ headline, tagline, cta, bgImage, bgVideo }: Props
         />
       )}
 
+      {/* ── Grain texture ── */}
+      <div className="grain-overlay" />
+
       {/* ── Warm parchment overlay ── */}
       <div
         className="absolute inset-0"
@@ -55,14 +58,14 @@ export default function Hero({ headline, tagline, cta, bgImage, bgVideo }: Props
       />
 
       {/* ── Content ── */}
-      <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 max-w-3xl mx-auto w-full">
 
         {/* Eyebrow */}
         <p
           className="hero-tagline font-ui text-[10px] tracking-[0.5em] uppercase text-gold mb-8"
           style={{ animationDelay: "0.6s" }}
         >
-          Handcrafted in Egypt · Est. 2024
+          Handcrafted in Egypt · Est. 2026
         </p>
 
         {/* Wordmark */}
@@ -90,7 +93,7 @@ export default function Hero({ headline, tagline, cta, bgImage, bgVideo }: Props
       </div>
 
       {/* ── Scroll indicator ── */}
-      <div className="hero-cta absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ animationDelay: "2.4s" }}>
+      <div className="hero-cta relative z-10 pb-8 flex flex-col items-center gap-2" style={{ animationDelay: "2.4s" }}>
         <span className="font-ui text-[9px] tracking-[0.3em] uppercase text-gold/60">Scroll</span>
         <div className="w-px h-8 bg-gradient-to-b from-gold/60 to-transparent" />
       </div>

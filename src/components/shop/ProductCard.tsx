@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
 import { ShoppingBag, Check, Sparkles } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
@@ -25,10 +25,13 @@ export default function ProductCard({
   product: ProductCardData;
   locale:  string;
 }) {
-  const [hovered, setHovered] = useState(false);
-  const [added,   setAdded]   = useState(false);
+  const [hovered,  setHovered]  = useState(false);
+  const [added,    setAdded]    = useState(false);
+  const [mounted,  setMounted]  = useState(false);
   const addItem  = useCartStore((s) => s.addItem);
   const { format, currency, toggle } = useCurrencyStore();
+
+  useEffect(() => setMounted(true), []);
 
   const name     = locale === "ar" ? product.nameAr : product.nameEn;
   const catName  = locale === "ar" ? product.category.nameAr : product.category.nameEn;
@@ -70,9 +73,9 @@ export default function ProductCard({
           <img
             src={product.images[0]}
             alt={name}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-              hovered && texture ? "opacity-0" : "opacity-100"
-            }`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
+              hovered && texture ? "opacity-0 scale-100" : "opacity-100"
+            } ${!texture && hovered ? "scale-105" : "scale-100"}`}
           />
         )}
 
@@ -81,8 +84,8 @@ export default function ProductCard({
           <img
             src={texture}
             alt=""
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-              hovered ? "opacity-100" : "opacity-0"
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
+              hovered ? "opacity-100 scale-105" : "opacity-0 scale-100"
             }`}
           />
         )}
@@ -143,13 +146,13 @@ export default function ProductCard({
         {/* Price + currency toggle */}
         <div className="flex items-center gap-2 pt-0.5">
           <span className="font-ui text-sm text-ink">
-            {format(product.price)}
+            {mounted ? format(product.price) : `EGP ${product.price.toLocaleString()}`}
           </span>
           <button
             onClick={handleCurrencyToggle}
             className="font-ui text-[9px] tracking-widest uppercase text-tan/60 hover:text-gold transition-colors border border-tan/25 px-1.5 py-0.5 leading-none"
           >
-            {currency === "EGP" ? "→ USD" : "→ EGP"}
+            {!mounted || currency === "EGP" ? "→ USD" : "→ EGP"}
           </button>
         </div>
       </div>
